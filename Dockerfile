@@ -5,8 +5,8 @@ MAINTAINER Sijin He ( sijin@ebi.ac.uk )
 
 LABEL Description="App Library for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
-LABEL software.version="1.0.0-rc.3"
-LABEL version="1.0"
+LABEL software.version="0.3.1"
+LABEL version="1.1.0"
 
 ENV REVISION="095e36259acbe28feffba048ddb7735ed57812a1"
 
