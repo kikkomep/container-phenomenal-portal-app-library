@@ -17,12 +17,13 @@ RUN apt-get update && apt-get install -y git python python-dev build-essential p
     pip install markdown2 && \
     apt-get purge -y python-dev build-essential python-pip && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 WORKDIR /var/www/html/php-phenomenal-portal-app-library
-RUN chmod 755 *
-RUN chmod 644 bin
-RUN chmod 644 conf
-RUN chmod +x ./bin/run.sh
-RUN echo "export BRANCH=master" > conf/branch.config
-RUN (crontab -l 2>/dev/null; echo "*/20 * * * * /var/www/html/php-phenomenal-portal-app-library/bin/run.sh > /var/log/refresh.log 2> /var/log/refresh.error") | crontab -
+
+RUN chmod 755 * && chmod 644 bin && chmod 644 conf && chmod +x ./bin/run.sh \
+    && echo "export BRANCH=master" > conf/branch.config \
+    && (crontab -l 2>/dev/null; \
+    { echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"; \
+      echo "*/10 * * * * /var/www/html/php-phenomenal-portal-app-library/bin/run.sh > /var/log/refresh.log 2> /var/log/refresh.error"; }) | crontab -
 
 EXPOSE 80
