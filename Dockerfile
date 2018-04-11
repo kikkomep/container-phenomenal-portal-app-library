@@ -8,7 +8,7 @@ LABEL software="PhenoMeNal Portal"
 LABEL software.version="0.4.0"
 LABEL version="1.2"
 
-ENV REVISION="095e36259acbe28feffba048ddb7735ed57812a1"
+ENV REVISION="4a0c0181ed6494ee3d8c3da1f98cb36d403e986b"
 
 WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y --no-install-recommends git python python-dev build-essential python-pip && \
