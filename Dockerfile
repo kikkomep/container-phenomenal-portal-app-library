@@ -1,7 +1,7 @@
 FROM nimmis/apache-php5:latest
 
 # File Author / Maintainer
-MAINTAINER Sijin He ( sijin@ebi.ac.uk )
+MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
 LABEL Description="App Library for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
