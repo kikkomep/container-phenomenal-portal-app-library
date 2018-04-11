@@ -11,7 +11,7 @@ LABEL version="1.2"
 ENV REVISION="095e36259acbe28feffba048ddb7735ed57812a1"
 
 WORKDIR /var/www/html
-RUN apt-get update && apt-get install -y git python python-dev build-essential python-pip && \
+RUN apt-get update && apt-get install -y --no-install-recommends git python python-dev build-essential python-pip && \
     git clone https://github.com/phnmnl/php-phenomenal-portal-app-library.git && \
     git -C php-phenomenal-portal-app-library checkout $REVISION && \
     pip install markdown2 && \
