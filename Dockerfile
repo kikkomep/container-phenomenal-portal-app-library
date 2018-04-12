@@ -10,7 +10,12 @@ LABEL version="1.2"
 
 ENV REVISION="4a0c0181ed6494ee3d8c3da1f98cb36d403e986b"
 
-WORKDIR /var/www/html
+# Meaningful working paths
+ENV WWW_ROOT "/var/www/html/"
+ENV APP_FOLDER "php-phenomenal-portal-app-library"
+
+# Install required software
+WORKDIR ${WWW_ROOT}
 RUN apt-get update && apt-get install -y --no-install-recommends git python python-dev build-essential python-pip && \
     git clone https://github.com/phnmnl/php-phenomenal-portal-app-library.git && \
     git -C php-phenomenal-portal-app-library checkout $REVISION && \
@@ -18,8 +23,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends git python pyth
     apt-get purge -y python-dev build-essential python-pip && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /var/www/html/php-phenomenal-portal-app-library
-
+# Update working dir and CRON configuration
+WORKDIR ${WWW_ROOT}/${APP_FOLDER}
 RUN chmod 755 * && chmod 644 bin && chmod 644 conf && chmod +x ./bin/run.sh \
     && echo "export BRANCH=master" > conf/branch.config \
     && (crontab -l 2>/dev/null; \
