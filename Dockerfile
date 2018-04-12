@@ -20,6 +20,7 @@ WORKDIR ${WWW_ROOT}
 RUN apt-get update && apt-get install -y --no-install-recommends git python python-dev build-essential python-pip && \
     git clone https://github.com/phnmnl/php-phenomenal-portal-app-library.git && \
     git -C php-phenomenal-portal-app-library checkout $REVISION && \
+    cd ${APP_FOLDER}/bin/markdown2html && git submodule init && git submodule update && \
     pip install markdown2 && \
     apt-get purge -y python-dev build-essential python-pip && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
