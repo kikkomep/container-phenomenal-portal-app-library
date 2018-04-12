@@ -8,7 +8,8 @@ LABEL software="PhenoMeNal Portal"
 LABEL software.version="0.4.0"
 LABEL version="1.2"
 
-ENV REVISION="4a0c0181ed6494ee3d8c3da1f98cb36d403e986b"
+# Software revision
+ENV REVISION="a4e066d559b8b7f377a8aba5ee7f4c05c5542b83"
 
 # Meaningful working paths
 ENV WWW_ROOT "/var/www/html/"
