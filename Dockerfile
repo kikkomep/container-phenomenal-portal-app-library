@@ -6,7 +6,7 @@ MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 # Metadata
 LABEL Description="App Library for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
-LABEL software.version="0.4.1"
+LABEL software.version="0.4.2"
 LABEL version="1.3"
 
 # Software revision
