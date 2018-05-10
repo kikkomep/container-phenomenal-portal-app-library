@@ -9,6 +9,8 @@ ENV version="1.4"
 # software version
 ENV software_version="1.1.0b0"
 
+# App name as ENV variable
+ENV APP_NAME "php-phenomenal-portal-app-library"
 
 # Metadata
 LABEL Description="App Library for the PhenoMeNal Portal"
@@ -16,20 +18,18 @@ LABEL software="PhenoMeNal Portal"
 LABEL version="${version}"
 LABEL software.version="${software_version}"
 
-# Software revision
-ENV REVISION="a4e066d559b8b7f377a8aba5ee7f4c05c5542b83"
+# Optional arguments to choose the Git repo & branch to use at build time
+ARG git_repo="phnmnl/${APP_NAME}"
+ARG git_branch="v${software_version}"
 
 # Web server root path
 ENV WWW_ROOT "/var/www/html/"
 
-# App name as ENV variable
-ENV APP_NAME "php-phenomenal-portal-app-library"
-
 # Install required software
 WORKDIR ${WWW_ROOT}
 RUN apt-get update && apt-get install -y --no-install-recommends git python python-dev build-essential python-pip && \
-    git clone https://github.com/phnmnl/${APP_NAME}.git && \
-    git -C ${APP_NAME} checkout $REVISION && \
+	  echo "Cloning branch '${git_branch}' of the Git repository '${git_repo}'" >&2 && \
+		git clone --depth 1 --single-branch -b ${git_branch} https://github.com/${git_repo}.git && \
     cd ${APP_NAME}/bin/markdown2html && git submodule init && git submodule update && \
     pip install markdown2 && \
     apt-get purge -y python-dev build-essential python-pip && \
