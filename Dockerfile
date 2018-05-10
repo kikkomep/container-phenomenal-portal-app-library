@@ -3,11 +3,18 @@ FROM nimmis/apache-php5:latest
 # File Author / Maintainer
 MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
+# container version
+ENV version="1.4"
+
+# software version
+ENV software_version="1.1.0b0"
+
+
 # Metadata
 LABEL Description="App Library for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
-LABEL software.version="0.4.2"
-LABEL version="1.3"
+LABEL version="${version}"
+LABEL software.version="${software_version}"
 
 # Software revision
 ENV REVISION="a4e066d559b8b7f377a8aba5ee7f4c05c5542b83"
